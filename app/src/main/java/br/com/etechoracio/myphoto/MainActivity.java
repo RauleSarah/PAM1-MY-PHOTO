@@ -34,14 +34,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 100 && resultCode == RESULT_OK) {
-            Toast.makeText(this, "Imagem capturada!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            intent.setData(uri);
-            this.sendBroadcast(intent);
-        } else {
-            Toast.makeText(this, "Imagem não Capturada!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Imagem capturada!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        intent.setData(uri);
+        this.sendBroadcast(intent);
         }
+        else {
+        Toast.makeText(this, "Imagem não Capturada!", Toast.LENGTH_LONG).show();
+         }
+
+        }
+    public void onVisualizar(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, "image/jpeg" );
+        startActivity(intent);
 
     }
-}
+    }
 
